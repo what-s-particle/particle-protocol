@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+import "protos/particle.proto";
+
+// Tab view layout component.
+message TabViewComponent {
+  // Child tabs in the component.
+  repeated Particle tabs = 1;
+}

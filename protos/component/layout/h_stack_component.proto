@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+import "protos/particle.proto";
+
+// Horizontal stack layout component.
+message HStackComponent {
+  // Child elements in the component.
+  repeated  Particle elements = 1;
+}

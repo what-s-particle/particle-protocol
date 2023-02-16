@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+import "protos/particle.proto";
+
+// Vertical stack layout component.
+message VStackComponent {
+  // Child elements in the component.
+  repeated Particle elements = 1;
+}

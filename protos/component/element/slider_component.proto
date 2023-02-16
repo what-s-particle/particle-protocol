@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+// Slider Element used to create a slider
+message SliderComponent {
+  // The initial value of the slider
+  double value = 1;
+  // The minimum value of the slider
+  double minValue = 2;
+  // The maximum value of the slider
+  double maxValue = 3;
+  // The function to be executed when the value of the slider changes
+  string onValueChange = 4;
+}
+

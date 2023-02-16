@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+import "protos/particle.proto";
+
+// ActionSheet Element used to create an action sheet.
+message ActionSheetComponent {
+  // Title of the action sheet.
+  string title = 1;
+  // Message to display in the action sheet.
+  string message = 2;
+  // Buttons to display in the action sheet.
+  repeated Particle buttons = 3;
+}

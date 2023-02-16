@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+import "protos/component/element/action_sheet_component.proto";
+import "protos/component/element/alert_component.proto";
+import "protos/component/element/button_component.proto";
+import "protos/component/element/check_box_component.proto";
+import "protos/component/element/image_component.proto";
+import "protos/component/element/navigation_item_component.proto";
+import "protos/component/element/picker_component.proto";
+import "protos/component/element/radio_button_component.proto";
+import "protos/component/element/slider_component.proto";
+import "protos/component/element/text_component.proto";
+import "protos/component/element/text_editor_component.proto";
+import "protos/component/element/text_field_component.proto";
+import "protos/component/element/toggle_component.proto";
+import "protos/component/element/tool_bar_item_component.proto";
+
+
+message ElementComponent {
+  oneof Element {
+    ButtonComponent button = 1; // Used to create a clickable button
+    TextComponent label = 2; // Used to display text
+    ImageComponent image = 3; // Used to display an image
+    TextFieldComponent text_field = 4; // Used to create a text input field
+    TextEditorComponent text_editor = 5; // Used to create a multiline text input field
+    SliderComponent slider = 6; // Used to create a slider
+    ToggleComponent toggle = 7; // Used to create a switch toggle
+    CheckBoxComponent checkbox = 8; // Used to create a checkbox
+    RadioButtonComponent radio_button = 9; // Used to create a radio button
+    PickerComponent picker = 10; // Used to create a dropdown list
+    ToolbarItemComponent tool_bar_item = 11; // Used to create a toolbar
+    NavigationViewItemComponent navigation_view_item = 12; // Used to create a navigation bar
+    AlertComponent alert = 13; // Used to create an alert dialog
+    ActionSheetComponent action_sheet = 14; // Used to create an action sheet
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+

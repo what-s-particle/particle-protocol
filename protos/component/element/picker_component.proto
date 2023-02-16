@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+// Picker Element used to create a dropdown list
+message PickerComponent {
+  // The list of options available in the dropdown
+  repeated string options = 1;
+  // The initial value of the dropdown
+  string value = 2;
+  // The function to be executed when the value of the dropdown changes
+  string onValueChange = 3;
+}
+

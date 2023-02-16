@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+import "protos/particle.proto";
+
+// Lazy column layout component.
+message LazyColumnComponent {
+  // Child elements in the component.
+  repeated Particle elements = 1;
+}

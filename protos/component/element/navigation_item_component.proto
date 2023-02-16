@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+import "protos/particle.proto";
+
+// NavigationViewItem Element used to create an item for a navigation view.
+message NavigationViewItemComponent {
+  // Text to display for the item.
+  string text = 1;
+  // Image to display for the item.
+  Particle image = 2;
+}

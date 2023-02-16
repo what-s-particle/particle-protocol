@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+// CheckBox Element used to create a checkbox
+message CheckBoxComponent {
+  // The label displayed next to the checkbox
+  string label = 1;
+  // The initial state of the checkbox
+  bool value = 2;
+  // The function to be executed when the state of the checkbox changes
+  string onValueChange = 3;
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+import "protos/particle.proto";
+
+// Lazy row layout component.
+message LazyRowComponent {
+  // Child elements in the component.
+  repeated Particle elements = 1;
+}
+

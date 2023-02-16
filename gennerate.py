@@ -1,7 +1,7 @@
 import os
 
 # Define the directory containing the PB files
-pb_dir = "./pb_dir"
+pb_dir = "./protos"
 # Define the name of the new PB file
 new_pb_file = "merge/particle.proto"
 

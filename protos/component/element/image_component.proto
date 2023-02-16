@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+// Image Element used to display an image
+message ImageComponent {
+  // The URL or resource identifier of the image to be displayed
+  string source = 1;
+  // The alternate text to be displayed in case the image is not available
+  string alt = 2;
+}
