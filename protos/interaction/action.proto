@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+//  当用户触发一个事件后，系统或应用程序需要做出响应。这个响应就是Action。Action指示应用程序在特定事件发生时执行的操作。在移动应用程序中，Action通常涉及到更新UI元素、发送网络请求、响应用户输入、处理后台任务等。
+//
+//  例如，在响应用户点击按钮的TAP_EVENT事件时，一个应用程序可以执行一个Action来显示一个对话框或者打开一个新的视图控制器。或者在响应用户滑动SWIPE_EVENT事件时，应用程序可以执行一个Action来切换到下一个页面或者显示一个侧边栏。
+//
+//  在移动应用程序中，Action可以由代码直接实现，也可以通过使用框架或库来简化实现过程。例如，对于更新UI元素的Action，可以使用框架如React Native、Flutter或iOS的UIKit来实现。而对于发送网络请求的Action，可以使用库如Retrofit、Alamofire或Volley来实现。
+//
+//  总之，Action是指示应用程序在特定事件发生时执行的操作，它是实现交互性和响应性的关键。
+
+
+// UI Actions 0~20
+
+
