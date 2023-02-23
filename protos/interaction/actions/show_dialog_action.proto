@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+// Action to show a dialog
+message ShowDialogAction {
+  string content = 1;
+}

@@ -2,7 +2,13 @@ syntax = "proto3";
 
 package com.yunlong.particle.proto;
 
-enum UIEvent {
+// An event is a notification that a specific action or interaction has occurred within a software application.
+// Events can include user interactions such as clicking a button or scrolling a page, system notifications such as
+// errors or warnings, or any other type of application-specific behavior.
+//
+// Events can be used to trigger other actions or behaviors within an application, or to provide feedback
+// to the user about the state of the application.
+enum Event {
   // User Events 0 ~19
   TOUCH_EVENT = 0;         // The event when the user touches the screen.
   TAP_EVENT = 1;           // The event when the user taps the screen.

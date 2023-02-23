@@ -2,24 +2,24 @@ syntax = "proto3";
 
 package com.yunlong.particle.proto;
 
-import "protos/component/element/action_sheet_component.proto";
-import "protos/component/element/alert_component.proto";
-import "protos/component/element/button_component.proto";
-import "protos/component/element/check_box_component.proto";
-import "protos/component/element/image_component.proto";
-import "protos/component/element/navigation_item_component.proto";
-import "protos/component/element/picker_component.proto";
-import "protos/component/element/radio_button_component.proto";
-import "protos/component/element/slider_component.proto";
-import "protos/component/element/text_component.proto";
-import "protos/component/element/text_editor_component.proto";
-import "protos/component/element/text_field_component.proto";
-import "protos/component/element/toggle_component.proto";
-import "protos/component/element/tool_bar_item_component.proto";
+import "protos/component/elements/action_sheet_component.proto";
+import "protos/component/elements/alert_component.proto";
+import "protos/component/elements/button_component.proto";
+import "protos/component/elements/check_box_component.proto";
+import "protos/component/elements/image_component.proto";
+import "protos/component/elements/navigation_item_component.proto";
+import "protos/component/elements/picker_component.proto";
+import "protos/component/elements/radio_button_component.proto";
+import "protos/component/elements/slider_component.proto";
+import "protos/component/elements/text_component.proto";
+import "protos/component/elements/text_editor_component.proto";
+import "protos/component/elements/text_field_component.proto";
+import "protos/component/elements/toggle_component.proto";
+import "protos/component/elements/tool_bar_item_component.proto";
 
 
 message ElementComponent {
-  oneof Element {
+  oneof element {
     ButtonComponent button = 1; // Used to create a clickable button
     TextComponent label = 2; // Used to display text
     ImageComponent image = 3; // Used to display an image

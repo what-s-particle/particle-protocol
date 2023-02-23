@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+// Action to submit a form
+message SubmitFormAction {
+  string content = 1;
+}
