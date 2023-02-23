@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+
+message SizeModifier {
+
+}

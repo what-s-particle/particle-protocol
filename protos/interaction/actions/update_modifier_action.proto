@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package com.yunlong.particle.proto;
 
-// Action to update the UI modifiers
-message UpdateModifiersAction {
+// Action to update the UI modifier
+message UpdateModifierAction {
   string content = 1;
 }
