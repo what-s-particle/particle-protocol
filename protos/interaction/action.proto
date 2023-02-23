@@ -8,7 +8,7 @@ import "protos/interaction/actions/custom_action.proto";
 import "protos/interaction/actions/submit_form_action.proto";
 import "protos/interaction/actions/show_dialog_action.proto";
 import "protos/interaction/actions/show_menu_action.proto";
-import "protos/interaction/actions/update_modifiers_action.proto";
+import "protos/interaction/actions/update_modifier_action.proto";
 import "protos/interaction/actions/store_data_action.proto";
 import "protos/interaction/actions/send_http_request_action.proto";
 import "protos/interaction/actions/open_external_app_action.proto";
@@ -32,8 +32,8 @@ message Action {
     ShowDialogAction show_dialog = 5;
     // Action to show a menu
     ShowMenuAction show_menu = 6;
-    // Action to update the UI modifiers
-    UpdateModifiersAction update_modifiers = 7;
+    // Action to update the UI modifier
+    UpdateModifierAction update_modifier = 7;
     // Action to store data
     StoreDataAction store_data = 8;
     // Action to send an HTTP request

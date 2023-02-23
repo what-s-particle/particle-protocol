@@ -3,6 +3,6 @@ syntax = "proto3";
 package com.yunlong.particle.proto;
 
 
-message Modifiers {
+message InsetsModifier {
 
 }

@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+import "protos/modifiers/insets_modifier.proto";
+import "protos/modifiers/size_modifier.proto";
+import "protos/modifiers/background_modifier.proto";
+import "protos/modifiers/offet_modifier.proto";
+import "protos/modifiers/border_modifier.proto";
+import "protos/modifiers/shadow_modifier.proto";
+import "protos/modifiers/custom_modifier.proto";
+
+// The styling of elements is a very important aspect. They grab the user's attention, make the application
+// easier to use, and increase user satisfaction with the application. In mobile apps, common styles include colors,
+// fonts, backgrounds, spacing, borders, and shadows, among others. These styles can be defined and applied by using
+// CSS, XML or a dedicated style language.
+
+// In mobile applications, a style is usually defined as a set of properties that control the appearance and behavior
+// of an element. For example, a button's style might include background color, text color, font size and style,
+// padding, border color and width, and more. These attributes can be shared among different elements in the
+// application and can be modified when needed to suit different application needs.
+
+// Another benefit of using styles is that it makes the application easier to maintain and modify. By defining
+// styles as separate files, you can modify the look and feel of your application without affecting the
+// application logic. This approach also improves development efficiency, since one style change can update
+// multiple elements throughout the application.
+
+message Modifier {
+  repeated CustomModifier custom = 1;
+  optional BackgroundModifier background = 2;
+  optional OffsetModifier blur = 3;
+  optional BorderModifier border = 4;
+  optional bool clickable = 5;
+  optional bool focusable = 6;
+  optional OffsetModifier offset = 7;
+  optional float opacity = 8;
+  optional InsetsModifier padding = 9;
+  optional SizeModifier require_size = 10;
+  optional ShadowModifier shadow = 11;
+  optional SizeModifier size = 12;
+  optional bool visible = 13;
+  optional float weight = 14;
+}
