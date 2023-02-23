@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+// Action to open a new screen
+message NavigateToAction {
+  string content = 1;
+}

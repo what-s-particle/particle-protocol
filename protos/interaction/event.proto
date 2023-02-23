@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+// An event is a notification that a specific action or interaction has occurred within a software application.
+// Events can include user interactions such as clicking a button or scrolling a page, system notifications such as
+// errors or warnings, or any other type of application-specific behavior.
+//
+// Events can be used to trigger other actions or behaviors within an application, or to provide feedback
+// to the user about the state of the application.
+enum Event {
+  // User Events 0 ~19
+  TOUCH_EVENT = 0;         // The event when the user touches the screen.
+  TAP_EVENT = 1;           // The event when the user taps the screen.
+  DOUBLE_TAP_EVENT = 2;    // The event when the user  double tap the screen.
+  PINCH_EVENT = 3;         // The event when the user zooms in or out using two fingers on the screen.
+  LONG_PRESS_EVENT = 4;    // The event when the user presses and holds the screen.
+  SCROLL_EVENT = 5;        // The event when the user scrolls on the screen.
+  ROTATE_EVENT = 6;        // The event when the user presses a key on the keyboard.
+  BLUR_EVENT = 12;         // The event when an element loses focus.
+  CHANGE_EVENT = 13;       // The event when the value of an element changes.
+  FOCUS_EVENT = 14;        // The event when an element gains focus.
+  INPUT_EVENT = 15;        // The event when the user inputs text.
+  RESET_EVENT = 16;        // The event when a form element is reset.
+
+  // Application and page lifecycle Events 20~29
+  APP_START_EVENT = 20;
+  APP_FOREGROUND_EVENT = 21;
+  APP_BACKGROUND_EVENT = 22;
+  APP_EXIT_EVENT = 23;
+  PAGE_LOADED_EVENT = 24;
+
+  // System Events 30~39
+  PUSH_NOTIFICATION_RECEIVED = 30;
+  PUSH_NOTIFICATION_OPENED = 31;
+  NETWORK_CONNECTED_EVENT = 32;        // The event when the device connects to a network.
+  NETWORK_DISCONNECTED_EVENT = 33;     // The event when the device disconnects from a network.
+
+  // Device events  40~49
+  BATTERY_LOW = 40;
+  BATTERY_CHANGE = 41;
+  SCREEN_ON = 42;
+  SCREEN_OFF = 43;
+
+  // Location Events
+  LOCATION_UPDATE_EVENT = 50;          // The event when the device location changes.
+
+  // Bluetooth Events
+
+  // GPS Events
+}

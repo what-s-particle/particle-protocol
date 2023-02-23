@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+import "protos/interaction/action.proto";
+import "protos/interaction/event.proto";
+
+// An interaction refers to any user-triggered event that occurs in a software application, such as clicking a button,
+// scrolling a page, or typing into a text field. Interactions can be used to initiate actions or events within
+// an application.
+message Interaction {
+  repeated Event event = 1;
+  repeated Action action = 2;
+}

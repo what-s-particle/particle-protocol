@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+import "protos/interaction/actions/navigate_back_action.proto";
+import "protos/interaction/actions/navigate_to_action.proto";
+import "protos/interaction/actions/custom_action.proto";
+import "protos/interaction/actions/submit_form_action.proto";
+import "protos/interaction/actions/show_dialog_action.proto";
+import "protos/interaction/actions/show_menu_action.proto";
+import "protos/interaction/actions/update_modifiers_action.proto";
+import "protos/interaction/actions/store_data_action.proto";
+import "protos/interaction/actions/send_http_request_action.proto";
+import "protos/interaction/actions/open_external_app_action.proto";
+
+//  An action is a specific task or behavior that is triggered by a user interaction,
+//  such as clicking a button or selecting an option from a menu. Actions can include a wide range of behaviors,
+//  from displaying a message or changing the appearance of an interface element, to performing complex operations
+//  such as sending data to a server or initiating a transaction.
+
+message Action {
+  oneof action {
+    // Action to define by Particle user
+    CustomAction custom = 1;
+    // Action to open a new screen
+    NavigateToAction navigate_to = 2;
+    // Action to open previous screen
+    NavigateBackAction navigate_back = 3;
+    // Action to submit a form
+    SubmitFormAction submit_form = 4;
+    // Action to show a dialog
+    ShowDialogAction show_dialog = 5;
+    // Action to show a menu
+    ShowMenuAction show_menu = 6;
+    // Action to update the UI modifiers
+    UpdateModifiersAction update_modifiers = 7;
+    // Action to store data
+    StoreDataAction store_data = 8;
+    // Action to send an HTTP request
+    SendHttpRequestAction send_http_request = 9;
+    // Action to open the browser, mailbox, phone, camera, etc.
+    OpenExternalAppAction open_external_app = 10;
+  }
+}

@@ -4,10 +4,15 @@ package com.yunlong.particle.proto;
 
 import "protos/component/element_component.proto";
 import "protos/component/layout_component.proto";
+import "protos/interaction/interaction.proto";
+import "protos/modifiers/modifiers.proto";
 
 message Particle {
+  string id = 1;
   oneof component {
-    ElementComponent element = 1;
-    LayoutComponent layout = 2;
+    ElementComponent element = 2;
+    LayoutComponent layout = 3;
   }
+  Modifiers modifier = 4;
+  repeated Interaction interactions = 5;
 }
