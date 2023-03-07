@@ -4,5 +4,5 @@ package com.yunlong.particle.proto;
 
 // Action to open the browser, mailbox, phone, camera, etc.
 message OpenExternalAppAction {
-  string content = 1;
+  string url = 1;
 }

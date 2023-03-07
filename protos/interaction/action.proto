@@ -5,13 +5,15 @@ package com.yunlong.particle.proto;
 import "protos/interaction/actions/navigate_back_action.proto";
 import "protos/interaction/actions/navigate_to_action.proto";
 import "protos/interaction/actions/custom_action.proto";
-import "protos/interaction/actions/submit_form_action.proto";
 import "protos/interaction/actions/show_dialog_action.proto";
 import "protos/interaction/actions/show_menu_action.proto";
 import "protos/interaction/actions/update_modifier_action.proto";
 import "protos/interaction/actions/store_data_action.proto";
 import "protos/interaction/actions/send_http_request_action.proto";
 import "protos/interaction/actions/open_external_app_action.proto";
+import "protos/interaction/actions/condition_action.proto";
+import "protos/interaction/actions/retrieve_data_action.proto";
+
 
 //  An action is a specific task or behavior that is triggered by a user interaction,
 //  such as clicking a button or selecting an option from a menu. Actions can include a wide range of behaviors,
@@ -26,19 +28,19 @@ message Action {
     NavigateToAction navigate_to = 2;
     // Action to open previous screen
     NavigateBackAction navigate_back = 3;
-    // Action to submit a form
-    SubmitFormAction submit_form = 4;
     // Action to show a dialog
-    ShowDialogAction show_dialog = 5;
+    ShowDialogAction show_dialog = 4;
     // Action to show a menu
-    ShowMenuAction show_menu = 6;
+    ShowMenuAction show_menu = 5;
     // Action to update the UI modifier
-    UpdateModifierAction update_modifier = 7;
+    UpdateModifierAction update_modifier = 6;
     // Action to store data
-    StoreDataAction store_data = 8;
+    StoreDataAction store_data = 7;
     // Action to send an HTTP request
-    SendHttpRequestAction send_http_request = 9;
+    SendHttpRequestAction send_http_request = 8;
     // Action to open the browser, mailbox, phone, camera, etc.
-    OpenExternalAppAction open_external_app = 10;
+    OpenExternalAppAction open_external_app = 9;
+    ConditionAction condition = 10;
+    RetrieveDataAction retrieve_data = 11;
   }
 }

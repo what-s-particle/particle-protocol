@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+// Image Element used to display an icon
+message IconComponent {
+  SymbolToken symbol = 1;
+  optional string description = 2;
+}
+
+enum SymbolToken {
+  XXX = 0;
+}

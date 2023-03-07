@@ -4,5 +4,6 @@ package com.yunlong.particle.proto;
 
 // Action to define by Particle user
 message CustomAction {
-  string content = 1;
+  string id = 1;
+  optional string payload = 2;
 }

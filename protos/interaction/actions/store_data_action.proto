@@ -4,5 +4,6 @@ package com.yunlong.particle.proto;
 
 // Action to store data
 message StoreDataAction {
-  string content = 1;
+  string key = 1;
+  string value = 2;
 }

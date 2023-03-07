@@ -2,7 +2,10 @@ syntax = "proto3";
 
 package com.yunlong.particle.proto;
 
+import "protos/interaction/actions/navigate_back_action.proto"
+
 // Action to open a new screen
 message NavigateToAction {
-  string content = 1;
+  string target = 1;
+  optional NavigationMode mode = 2;
 }

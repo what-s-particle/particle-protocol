@@ -2,7 +2,9 @@ syntax = "proto3";
 
 package com.yunlong.particle.proto;
 
+import "protos/particle.proto";
+
 // Action to show a dialog
 message ShowDialogAction {
-  string content = 1;
+  Particle dialog = 1;
 }

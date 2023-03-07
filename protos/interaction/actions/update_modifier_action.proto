@@ -2,7 +2,10 @@ syntax = "proto3";
 
 package com.yunlong.particle.proto;
 
+import "protos/modifiers/modifier.proto"
+
 // Action to update the UI modifier
 message UpdateModifierAction {
-  string content = 1;
+  bool override = 1;
+  Modifier modifier = 2;
 }

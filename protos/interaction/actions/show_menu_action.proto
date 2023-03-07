@@ -2,7 +2,9 @@ syntax = "proto3";
 
 package com.yunlong.particle.proto;
 
+import "protos/particle.proto";
+
 /// Action to show a menu
 message ShowMenuAction {
-  string content = 1;
+  Particle menu = 1;
 }
