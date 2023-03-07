@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+import "protos/particle.proto";
+
+enum Alignment {
+  TOP = 0;
+  CENTER = 1;
+  BOTTOM = 2;
+  START = 3;
+  END = 4;
+  TOP_START = 5;
+  TOP_CENTER = 6;
+  TOP_END = 7;
+  BOTTOM_START = 8;
+  BOTTOM_CENTER = 9;
+  BOTTOM_END = 10;
+  CENTER_START = 11;
+  CENTER_END = 12;
+}

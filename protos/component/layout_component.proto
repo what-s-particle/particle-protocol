@@ -2,15 +2,13 @@ syntax = "proto3";
 
 package com.yunlong.particle.proto;
 
-import "protos/component/layouts/h_stack_component.proto";
+import "protos/component/layouts/row_component.proto";
 import "protos/component/layouts/lazy_column_component.proto";
 import "protos/component/layouts/lazy_row_component.proto";
 import "protos/component/layouts/navigation_view_component.proto";
-import "protos/component/layouts/scrollable_component.proto";
 import "protos/component/layouts/tab_view_component.proto";
-import "protos/component/layouts/tool_bar_component.proto";
-import "protos/component/layouts/v_stack_component.proto";
-import "protos/component/layouts/z_stack_component.proto";
+import "protos/component/layouts/column_component.proto";
+import "protos/component/layouts/box_component.proto";
 
 //  Layout container types.
 //  HStack: a horizontal stack layout container that contains child elements
@@ -18,7 +16,6 @@ import "protos/component/layouts/z_stack_component.proto";
 //  ZStack: a Z-axis stack layout container that contains child elements
 //  LazyColumn: a lazy column layout container that contains child elements
 //  LazyRow: a lazy row layout container that contains child elements
-//  Scrollable: a scrollable layout container that contains child elements
 //  TabView: a tab view layout container that contains child tabs
 //  NavigationView: a navigation view layout container that contains child elements
 
@@ -28,14 +25,12 @@ import "protos/component/layouts/z_stack_component.proto";
 
 message LayoutComponent {
   oneof component {
-    HStackComponent h_stack = 1;
-    VStackComponent v_stack = 2;
-    ZStackComponent z_stack = 3;
+    RowComponent row = 1;
+    ColumnComponent column = 2;
+    BoxComponent box = 3;
     LazyColumnComponent lazy_column = 4;
     LazyRowComponent lazy_row = 5;
-    ScrollableComponent scrollable = 6;
-    TabViewComponent tab_view = 7;
-    NavigationViewComponent navigation_view = 8;
-    ToolbarComponent tool_bar = 9;
+    TabViewComponent tab_view = 6;
+    NavigationViewComponent navigation_view = 7;
   }
 }

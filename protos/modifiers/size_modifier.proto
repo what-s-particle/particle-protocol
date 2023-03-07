@@ -6,3 +6,10 @@ package com.yunlong.particle.proto;
 message SizeModifier {
 
 }
+
+message PaddingModifier {
+  optional int32 left = 1;
+  optional int32 top = 2;
+  optional int32 right = 3;
+  optional int32 bottom = 4;
+}
