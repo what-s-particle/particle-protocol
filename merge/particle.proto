@@ -64,6 +64,12 @@ message ColorValue {
 }
 message SizeModifier {
 }
+message PaddingModifier {
+  optional int32 left = 1;
+  optional int32 top = 2;
+  optional int32 right = 3;
+  optional int32 bottom = 4;
+}
 message InsetsModifier {
 }
 message BackgroundModifier {
@@ -85,7 +91,7 @@ message ElementComponent {
     RadioButtonComponent radio_button = 9; // Used to create a radio button
     PickerComponent picker = 10; // Used to create a dropdown list
     TopAppBarComponent top_app_bar = 11; // Used to create a toolbar
-    NavigationViewItemComponent navigation_view_item = 12; // Used to create a navigation bar
+    NavigationBarItemComponent navigation_view_item = 12; // Used to create a navigation bar
     AlertComponent alert = 13; // Used to create an alert dialog
     ActionSheetComponent action_sheet = 14; // Used to create an action sheet
   }
@@ -96,32 +102,20 @@ message ElementComponent {
 //  ZStack: a Z-axis stack layout container that contains child elements
 //  LazyColumn: a lazy column layout container that contains child elements
 //  LazyRow: a lazy row layout container that contains child elements
-//  Scrollable: a scrollable layout container that contains child elements
 //  TabView: a tab view layout container that contains child tabs
 //  NavigationView: a navigation view layout container that contains child elements
 //  NOTE: Each of the layout container types includes a repeated field called `elements` or `tabs`,
 //  which contains the child elements or tabs within the container.
 message LayoutComponent {
   oneof component {
-    HStackComponent h_stack = 1;
-    VStackComponent v_stack = 2;
-    ZStackComponent z_stack = 3;
+    RowComponent row = 1;
+    ColumnComponent column = 2;
+    BoxComponent box = 3;
     LazyColumnComponent lazy_column = 4;
     LazyRowComponent lazy_row = 5;
-    ScrollableComponent scrollable = 6;
-    TabViewComponent tab_view = 7;
-    NavigationViewComponent navigation_view = 8;
-    ToolbarComponent tool_bar = 9;
+    TabViewComponent tab_view = 6;
+    NavigationViewComponent navigation_view = 7;
   }
-}
-// NavigationViewItem Element used to create an item for a navigation view.
-message NavigationViewItemComponent {
-  // Text to display for the item.
-  Particle text = 1;
-  // Icon to display for the item.
-  Particle icon = 2;
-  // Whether this item is selected.
-  bool selected = 3;
 }
 // TopBarItem Element used to create an item for a toolbar.
 message TopAppBarComponent {
@@ -169,6 +163,15 @@ message AlertComponent {
   optional Particle confirmButton = 3;
   // Button to dismiss the alert.
   optional Particle dismissButton = 4;
+}
+// NavigationViewItem Element used to create an item for a navigation view.
+message NavigationBarItemComponent {
+  // Text to display for the item.
+  Particle text = 1;
+  // Icon to display for the item.
+  Particle icon = 2;
+  // Whether this item is selected.
+  bool selected = 3;
 }
 // TextEditor Element used to create a multi-line text editor
 message TextEditorComponent {
@@ -273,46 +276,88 @@ message ActionSheetComponent {
 message LazyRowComponent {
   // Child elements in the component.
   repeated Particle elements = 1;
+  optional Arrangement arrangement = 2;
+  optional Alignment alignment = 3;
+  optional SizeModifier spacing = 4;
+  optional bool reverse_layout = 5;
+  optional PaddingModifier content_padding = 6;
 }
 // Navigation view layout component.
 message NavigationViewComponent {
   // Child elements in the component.
   repeated Particle elements = 1;
+  repeated Particle bars = 2;
+  // The currently selected item id in the NavigationView
+  string selected_element = 3;
 }
-// Horizontal stack layout component.
-message HStackComponent {
-  // Child elements in the component.
-  repeated  Particle elements = 1;
+enum Arrangement {
+  START = 0;
+  END = 1;
+  TOP = 2;
+  BOTTOM = 3;
+  CENTER = 4;
+  SPACE_EVENLY = 5;
+  SPACE_BETWEEN = 6;
+  SPACE_AROUND = 7;
 }
-// Vertical stack layout component.
-message VStackComponent {
+// Z-axis stack layout component.
+message BoxComponent {
   // Child elements in the component.
   repeated Particle elements = 1;
 }
 // Lazy column layout component.
 message LazyColumnComponent {
-  // Child elements in the component.
   repeated Particle elements = 1;
+  optional Arrangement arrangement = 2;
+  optional Alignment alignment = 3;
+  optional SizeModifier spacing = 4;
+  optional bool reverse_layout = 5;
+  optional PaddingModifier content_padding = 6;
 }
-// Scrollable layout component.
-message ScrollableComponent {
+// Vertical stack layout component.
+message ColumnComponent {
   // Child elements in the component.
-  repeated Particle elements = 1;
-}
-// Toolbar element used to create a toolbar
-message ToolbarComponent {
-  // The list of toolbar items in the toolbar
   repeated  Particle elements = 1;
+  optional Arrangement arrangement = 2;
+  optional Alignment alignment = 3;
+  optional SizeModifier spacing = 4;
 }
-// Z-axis stack layout component.
-message ZStackComponent {
+enum Alignment {
+  TOP = 0;
+  CENTER = 1;
+  BOTTOM = 2;
+  START = 3;
+  END = 4;
+  TOP_START = 5;
+  TOP_CENTER = 6;
+  TOP_END = 7;
+  BOTTOM_START = 8;
+  BOTTOM_CENTER = 9;
+  BOTTOM_END = 10;
+  CENTER_START = 11;
+  CENTER_END = 12;
+}
+// Horizontal stack layout component.
+message RowComponent {
   // Child elements in the component.
-  repeated Particle elements = 1;
+  repeated  Particle elements = 1;
+  optional Arrangement arrangement = 2;
+  optional Alignment alignment = 3;
+  optional SizeModifier spacing = 4;
 }
 // Tab view layout component.
 message TabViewComponent {
   // Child tabs in the component.
   repeated Particle tabs = 1;
+  // whether this tab is selected or not
+  bool selected = 2;
+  // controls the enabled state of this tab. When false, this component will not respond to user input,
+  // and it will appear visually disabled and disabled to accessibility services.
+  bool enabled = 3;
+  // the color for the content of this tab when selected, and the color of the ripple.
+  optional ColorModifier selected_color = 4;
+  // the color for the content of this tab when not selected
+  optional ColorModifier unselected_color = 5;
 }
 // An interaction refers to any user-triggered event that occurs in a software application, such as clicking a button,
 // scrolling a page, or typing into a text field. Interactions can be used to initiate actions or events within

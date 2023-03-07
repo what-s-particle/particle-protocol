@@ -7,15 +7,11 @@ import "protos/modifiers/size_modifier.proto";
 import "protos/component/layouts/alignment.proto";
 import "protos/component/layouts/arrangement.proto";
 
-// Lazy row layout component.
-message LazyRowComponent {
+// Vertical stack layout component.
+message ColumnComponent {
   // Child elements in the component.
-  repeated Particle elements = 1;
+  repeated  Particle elements = 1;
   optional Arrangement arrangement = 2;
   optional Alignment alignment = 3;
   optional SizeModifier spacing = 4;
-  optional bool reverse_layout = 5;
-  optional PaddingModifier content_padding = 6;
-
 }
-

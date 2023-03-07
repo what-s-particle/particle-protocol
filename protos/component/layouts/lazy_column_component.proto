@@ -4,8 +4,17 @@ package com.yunlong.particle.proto;
 
 import "protos/particle.proto";
 
+import "protos/modifiers/size_modifier.proto";
+import "protos/component/layouts/alignment.proto";
+import "protos/component/layouts/arrangement.proto";
+
 // Lazy column layout component.
 message LazyColumnComponent {
-  // Child elements in the component.
   repeated Particle elements = 1;
+  optional Arrangement arrangement = 2;
+  optional Alignment alignment = 3;
+  optional SizeModifier spacing = 4;
+  optional bool reverse_layout = 5;
+  optional PaddingModifier content_padding = 6;
+
 }
