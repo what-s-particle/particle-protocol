@@ -2,7 +2,9 @@ syntax = "proto3";
 
 package com.yunlong.particle.proto;
 
+import "protos/modifiers/size_modifier.proto";
 
 message OffsetModifier {
-
+  SizeModifier xOffset = 1;
+  SizeModifier yOffset = 2;
 }

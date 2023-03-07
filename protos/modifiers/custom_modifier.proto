@@ -4,5 +4,6 @@ package com.yunlong.particle.proto;
 
 
 message CustomModifier {
-
+  string id = 1;
+  optional string payload = 2;
 }

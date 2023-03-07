@@ -4,12 +4,12 @@ package com.yunlong.particle.proto;
 
 
 message SizeModifier {
-
+  oneof sie {
+    SizeToken token = 1;
+    int32 value = 2;
+  }
 }
 
-message PaddingModifier {
-  optional int32 left = 1;
-  optional int32 top = 2;
-  optional int32 right = 3;
-  optional int32 bottom = 4;
+enum SizeToken {
+  SIZE_TOKEN_0 = 0;
 }

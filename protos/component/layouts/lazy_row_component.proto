@@ -4,6 +4,7 @@ package com.yunlong.particle.proto;
 
 import "protos/particle.proto";
 import "protos/modifiers/size_modifier.proto";
+import "protos/modifiers/insets_modifier.proto";
 import "protos/component/layouts/alignment.proto";
 import "protos/component/layouts/arrangement.proto";
 
@@ -15,7 +16,6 @@ message LazyRowComponent {
   optional Alignment alignment = 3;
   optional SizeModifier spacing = 4;
   optional bool reverse_layout = 5;
-  optional PaddingModifier content_padding = 6;
-
+  optional InsetsModifier content_padding = 6;
 }
 

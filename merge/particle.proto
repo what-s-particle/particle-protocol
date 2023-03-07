@@ -11,8 +11,12 @@ message Particle {
   repeated Interaction interactions = 5;
 }
 message BorderModifier {
+  int32 width = 1;
+  ColorModifier color = 2;
 }
 message CustomModifier {
+  string id = 1;
+  optional string payload = 2;
 }
 // The styling of elements is a very important aspect. They grab the user's attention, make the application
 // easier to use, and increase user satisfaction with the application. In mobile apps, common styles include colors,
@@ -28,7 +32,7 @@ message CustomModifier {
 // multiple elements throughout the application.
 message Modifier {
   repeated CustomModifier custom = 1;
-  optional BackgroundModifier background = 2;
+  optional ColorModifier background = 2;
   optional OffsetModifier blur = 3;
   optional BorderModifier border = 4;
   optional bool clickable = 5;
@@ -45,7 +49,7 @@ message Modifier {
 message ColorModifier {
   oneof color {
     ColorToken token = 1;
-    ColorValue value = 2;
+    int32 value = 2;
   }
 }
 enum ColorToken {
@@ -63,20 +67,28 @@ message ColorValue {
   float alpha = 4;
 }
 message SizeModifier {
+  oneof sie {
+    SizeToken token = 1;
+    int32 value = 2;
+  }
 }
-message PaddingModifier {
-  optional int32 left = 1;
-  optional int32 top = 2;
-  optional int32 right = 3;
-  optional int32 bottom = 4;
+enum SizeToken {
+  SIZE_TOKEN_0 = 0;
 }
 message InsetsModifier {
+  optional SizeModifier left = 1;
+  optional SizeModifier top = 2;
+  optional SizeModifier right = 3;
+  optional SizeModifier bottom = 4;
 }
-message BackgroundModifier {
-}
-message ShadowModifier {
+enum ShadowModifier {
+  DEFAULT = 0;
+  SHADOW_1 = 1;
+  SHADOW_2 = 2;
 }
 message OffsetModifier {
+  SizeModifier xOffset = 1;
+  SizeModifier yOffset = 2;
 }
 message ElementComponent {
   oneof element {
@@ -163,6 +175,7 @@ message AlertComponent {
   optional Particle confirmButton = 3;
   // Button to dismiss the alert.
   optional Particle dismissButton = 4;
+  optional Particle icon = 5;
 }
 // NavigationViewItem Element used to create an item for a navigation view.
 message NavigationBarItemComponent {
@@ -202,6 +215,14 @@ enum ContentMode {
   SCALE_TO_FIT = 0;
   SCALE_ASPECT_FIT = 1;
   SCALE_ASPECT_FILL = 2;
+}
+// Image Element used to display an icon
+message IconComponent {
+  SymbolToken symbol = 1;
+  optional string description = 2;
+}
+enum SymbolToken {
+  XXX = 0;
 }
 // Text Element used to display text
 message TextComponent {
@@ -266,9 +287,9 @@ message CheckBoxComponent {
 // that pops up from the bottom.
 message ActionSheetComponent {
   // Title of the action sheet.
-  optional string title = 1;
+  optional Particle title = 1;
   // Message to display in the action sheet.
-  optional string message = 2;
+  optional Particle message = 2;
   // Buttons to display in the action sheet.
   repeated Particle buttons = 3;
 }
@@ -280,7 +301,7 @@ message LazyRowComponent {
   optional Alignment alignment = 3;
   optional SizeModifier spacing = 4;
   optional bool reverse_layout = 5;
-  optional PaddingModifier content_padding = 6;
+  optional InsetsModifier content_padding = 6;
 }
 // Navigation view layout component.
 message NavigationViewComponent {
@@ -312,7 +333,7 @@ message LazyColumnComponent {
   optional Alignment alignment = 3;
   optional SizeModifier spacing = 4;
   optional bool reverse_layout = 5;
-  optional PaddingModifier content_padding = 6;
+  optional InsetsModifier content_padding = 6;
 }
 // Vertical stack layout component.
 message ColumnComponent {
@@ -323,11 +344,11 @@ message ColumnComponent {
   optional SizeModifier spacing = 4;
 }
 enum Alignment {
-  TOP = 0;
-  CENTER = 1;
-  BOTTOM = 2;
-  START = 3;
-  END = 4;
+  TOP_ALIGNMENT = 0;
+  CENTER_ALIGNMENT = 1;
+  BOTTOM_ALIGNMENT = 2;
+  START_ALIGNMENT = 3;
+  END_ALIGNMENT = 4;
   TOP_START = 5;
   TOP_CENTER = 6;
   TOP_END = 7;
@@ -378,20 +399,20 @@ message Action {
     NavigateToAction navigate_to = 2;
     // Action to open previous screen
     NavigateBackAction navigate_back = 3;
-    // Action to submit a form
-    SubmitFormAction submit_form = 4;
     // Action to show a dialog
-    ShowDialogAction show_dialog = 5;
+    ShowDialogAction show_dialog = 4;
     // Action to show a menu
-    ShowMenuAction show_menu = 6;
+    ShowMenuAction show_menu = 5;
     // Action to update the UI modifier
-    UpdateModifierAction update_modifier = 7;
+    UpdateModifierAction update_modifier = 6;
     // Action to store data
-    StoreDataAction store_data = 8;
+    StoreDataAction store_data = 7;
     // Action to send an HTTP request
-    SendHttpRequestAction send_http_request = 9;
+    SendHttpRequestAction send_http_request = 8;
     // Action to open the browser, mailbox, phone, camera, etc.
-    OpenExternalAppAction open_external_app = 10;
+    OpenExternalAppAction open_external_app = 9;
+    ConditionAction condition = 10;
+    RetrieveDataAction retrieve_data = 11;
   }
 }
 // An event is a notification that a specific action or interaction has occurred within a software application.
@@ -434,44 +455,86 @@ enum Event {
   LOCATION_UPDATE_EVENT = 50;          // The event when the device location changes.
   // Bluetooth Events
   // GPS Events
+  //Layout and element Events 100~200
+  ON_ACTION_SHEET_ITEM_CLICK = 100;
+  ON_CHECKBOX_CHANGE = 101;
+  ON_NAVIGATION_BAR_ITEM_CLICK = 102;
+  ON_PICKER_ITEM_CLICK = 103;
+  ON_RADIO_BUTTON_CLICK = 104;
+  ON_SLIDER_VALUE_CHANGED = 105;
+  ON_TEXT_FIELD_VALUE_CHANGED = 106;
+  ON_TEXT_EDITOR_VALUE_CHANGED = 107;
+  ON_TOGGLE_CHECKED_CHANGE = 108;
 }
 // Action to define by Particle user
 message CustomAction {
-  string content = 1;
+  string id = 1;
+  optional string payload = 2;
 }
 // Action to open a new screen
 message NavigateToAction {
-  string content = 1;
+  string target = 1;
+  optional NavigationMode mode = 2;
+}
+// Action of if else
+message ConditionAction {
+  ConditionType type = 1;
+  repeated Action if_actions = 2;
+  repeated Action  else_actions = 3;
+}
+message ConditionType {
 }
 // Action to open previous screen
 message NavigateBackAction {
-  string content = 1;
+  optional NavigationMode mode = 1;
 }
-// Action to submit a form
-message SubmitFormAction {
-  string content = 1;
+enum NavigationMode{
+  XXXX = 0;
 }
 // Action to update the UI modifier
 message UpdateModifierAction {
-  string content = 1;
+  bool override = 1;
+  Modifier modifier = 2;
+}
+// Action to retrieve data
+message RetrieveDataAction {
+  string key = 1;
+  string value = 2;
+  repeated Action subsequent_action = 3;
 }
 // Action to store data
 message StoreDataAction {
-  string content = 1;
+  string key = 1;
+  string value = 2;
 }
 // Action to open the browser, mailbox, phone, camera, etc.
 message OpenExternalAppAction {
-  string content = 1;
+  string url = 1;
 }
 // Action to show a dialog
 message ShowDialogAction {
-  string content = 1;
+  Particle dialog = 1;
 }
 // Action to send an HTTP request
 message SendHttpRequestAction {
-  string content = 1;
+  string endpoint = 1;
+  RequestType type = 2;
+  map<string, string> body = 3;
+  repeated Action success_actions = 4;
+  repeated Action failure_actions = 5;
+}
+enum RequestType{
+  GET = 0;
+  POST = 1;
+  PUT = 2;
+  DELETE = 3;
+  HEAD = 4;
+  OPTIONS = 5;
+  CONNECT = 6;
+  TRACE = 7;
+  PATCH = 8;
 }
 /// Action to show a menu
 message ShowMenuAction {
-  string content = 1;
+  Particle menu = 1;
 }
