@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+import "protos/interaction/action.proto"
+
+// Action to retrieve data
+message RetrieveDataAction {
+  string key = 1;
+  string value = 2;
+  repeated Action subsequent_action = 3;
+}

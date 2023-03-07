@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+import "protos/interaction/action.proto";
+
+// Action of if else
+message ConditionAction {
+  ConditionType type = 1;
+  repeated Action if_actions = 2;
+  repeated Action  else_actions = 3;
+}
+
+message ConditionType {
+
+}

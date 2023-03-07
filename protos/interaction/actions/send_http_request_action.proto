@@ -2,7 +2,25 @@ syntax = "proto3";
 
 package com.yunlong.particle.proto;
 
+import "protos/interaction/action.proto";
+
 // Action to send an HTTP request
 message SendHttpRequestAction {
-  string content = 1;
+  string endpoint = 1;
+  RequestType type = 2;
+  map<string, string> body = 3;
+  repeated Action success_actions = 4;
+  repeated Action failure_actions = 5;
+}
+
+enum RequestType{
+  GET = 0;
+  POST = 1;
+  PUT = 2;
+  DELETE = 3;
+  HEAD = 4;
+  OPTIONS = 5;
+  CONNECT = 6;
+  TRACE = 7;
+  PATCH = 8;
 }

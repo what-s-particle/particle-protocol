@@ -4,5 +4,9 @@ package com.yunlong.particle.proto;
 
 // Action to open previous screen
 message NavigateBackAction {
-  string content = 1;
+  optional NavigationMode mode = 1;
+}
+
+enum NavigationMode{
+  XXXX = 0;
 }
