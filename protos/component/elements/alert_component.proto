@@ -7,9 +7,11 @@ import "protos/particle.proto";
 // Alert Element used to create an alert.
 message AlertComponent {
   // Title of the alert.
-  string title = 1;
+  optional string title = 1;
   // Message to display in the alert.
-  string message = 2;
+  optional string message = 2;
+  // Button to confirm the alert.
+  optional Particle confirmButton = 3;
   // Button to dismiss the alert.
-  Particle dismissButton = 3;
+  optional Particle dismissButton = 4;
 }

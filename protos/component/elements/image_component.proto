@@ -4,8 +4,20 @@ package com.yunlong.particle.proto;
 
 // Image Element used to display an image
 message ImageComponent {
-  // The URL or resource identifier of the image to be displayed
-  string source = 1;
-  // The alternate text to be displayed in case the image is not available
-  string alt = 2;
+  // The URL of the image.
+  string url = 1;
+  // The localized description of the image.
+  string description = 2;
+  // Whether to display the image as a circular shape.
+  bool circular = 4;
+  // Whether to load the local resource
+  bool local = 5;
+  // The content mode of the image.
+  ContentMode content_mode = 6;
+}
+
+enum ContentMode {
+  SCALE_TO_FIT = 0;
+  SCALE_ASPECT_FIT = 1;
+  SCALE_ASPECT_FILL = 2;
 }
