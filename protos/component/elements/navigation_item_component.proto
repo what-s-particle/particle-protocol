@@ -7,7 +7,9 @@ import "protos/particle.proto";
 // NavigationViewItem Element used to create an item for a navigation view.
 message NavigationViewItemComponent {
   // Text to display for the item.
-  string text = 1;
-  // Image to display for the item.
-  Particle image = 2;
+  Particle text = 1;
+  // Icon to display for the item.
+  Particle icon = 2;
+  // Whether this item is selected.
+  bool selected = 3;
 }

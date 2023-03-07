@@ -2,8 +2,34 @@ syntax = "proto3";
 
 package com.yunlong.particle.proto;
 
+import "protos/modifiers/color_modifier.proto";
+import "protos/modifiers/size_modifier.proto";
+
 // Text Element used to display text
 message TextComponent {
   // The text content to be displayed
   string content = 1;
+  // The name of the font family, such as "Arial".
+  optional FontFamily fontFamily = 2;
+  // The size of the font, in points.
+  optional SizeModifier fontSize = 3;
+  // Whether the text is bold or not.
+  optional bool bold = 4;
+  // Whether the text is italic or not.
+  optional bool italic = 5;
+  // Whether the text is underlined or not.
+  optional bool underline = 6;
+  // Whether the text has a strikethrough line or not.
+  optional  bool strikethrough = 7;
+  // The color of the text, specified as a hex code or name.
+  optional  ColorModifier color = 8;
+}
+
+enum FontFamily {
+  UNDEFINED = 0;
+  SYSTEM_DEFAULT = 1;
+  SANS_SERIF = 2;
+  SERIF = 3;
+  MONOSPACE = 4;
+  CUSTOM_FONT = 5;
 }

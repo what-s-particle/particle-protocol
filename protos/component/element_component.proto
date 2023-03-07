@@ -15,7 +15,7 @@ import "protos/component/elements/text_component.proto";
 import "protos/component/elements/text_editor_component.proto";
 import "protos/component/elements/text_field_component.proto";
 import "protos/component/elements/toggle_component.proto";
-import "protos/component/elements/tool_bar_item_component.proto";
+import "protos/component/elements/top_app_bar_component.proto";
 
 
 message ElementComponent {
@@ -30,7 +30,7 @@ message ElementComponent {
     CheckBoxComponent checkbox = 8; // Used to create a checkbox
     RadioButtonComponent radio_button = 9; // Used to create a radio button
     PickerComponent picker = 10; // Used to create a dropdown list
-    ToolbarItemComponent tool_bar_item = 11; // Used to create a toolbar
+    TopAppBarComponent top_app_bar = 11; // Used to create a toolbar
     NavigationViewItemComponent navigation_view_item = 12; // Used to create a navigation bar
     AlertComponent alert = 13; // Used to create an alert dialog
     ActionSheetComponent action_sheet = 14; // Used to create an action sheet

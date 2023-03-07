@@ -2,12 +2,10 @@ syntax = "proto3";
 
 package com.yunlong.particle.proto;
 
-// TextField Element used to create a text input field
+// TextField Element used to create a text field
 message TextFieldComponent {
-  // The text prompt to be displayed as a placeholder in the text field
-  string prompt = 1;
+  // Optional placeholder text to display when the field is empty
+  optional string placeholder = 1;
   // The initial value of the text field
-  string value = 2;
-  // Function to be executed when the text in the field changes
-  string onValueChange = 3;
+  optional string value = 2;
 }

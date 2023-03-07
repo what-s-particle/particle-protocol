@@ -4,10 +4,8 @@ package com.yunlong.particle.proto;
 
 // Toggle Element used to create a toggle switch
 message ToggleComponent {
-  // The label displayed next to the toggle switch
+  // The text label for the toggle switch.
   string label = 1;
-  // The initial state of the toggle switch
-  bool value = 2;
-  // The function to be executed when the state of the toggle switch changes
-  string onValueChange = 3;
+  // Whether the toggle switch is currently in the "on" or "off" position.
+  bool isChecked = 2;
 }

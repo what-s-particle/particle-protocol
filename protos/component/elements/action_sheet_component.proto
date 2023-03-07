@@ -5,11 +5,13 @@ package com.yunlong.particle.proto;
 import "protos/particle.proto";
 
 // ActionSheet Element used to create an action sheet.
+// In Jetpack Compose, we can use the combination of `DropdownMenu` and `Text` to implement an ActionSheet
+// that pops up from the bottom.
 message ActionSheetComponent {
   // Title of the action sheet.
-  string title = 1;
+  optional string title = 1;
   // Message to display in the action sheet.
-  string message = 2;
+  optional string message = 2;
   // Buttons to display in the action sheet.
   repeated Particle buttons = 3;
 }

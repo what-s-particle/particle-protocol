@@ -2,12 +2,10 @@ syntax = "proto3";
 
 package com.yunlong.particle.proto;
 
-// TextEditor Element used to create a multi-line text input field
+// TextEditor Element used to create a multi-line text editor
 message TextEditorComponent {
-  // The text prompt to be displayed as a placeholder in the text editor
-  string prompt = 1;
+  // Optional placeholder text to display when the editor is empty
+  optional string placeholder = 1;
   // The initial value of the text editor
-  string value = 2;
-  // Function to be executed when the text in the editor changes
-  string onValueChange = 3;
+  optional string value = 2;
 }

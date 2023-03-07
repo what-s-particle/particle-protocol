@@ -2,8 +2,10 @@ syntax = "proto3";
 
 package com.yunlong.particle.proto;
 
+import "protos/particle.proto";
+
 // Button Element used to create a clickable button
 message ButtonComponent {
-  // Text displayed on the button
-  string label = 1;
+  // Element(s) displayed on the button
+  Particle elements = 1;
 }

@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+message ColorModifier {
+  oneof color {
+    ColorToken token = 1;
+    ColorValue value = 2;
+  }
+}
+
+enum ColorToken {
+  TOKEN_1 = 0;
+  TOKEN_2 = 1;
+}
+
+message ColorValue {
+  // The red component of the color, from 0-255.
+  uint32 red = 1;
+
+  // The green component of the color, from 0-255.
+  uint32 green = 2;
+
+  // The blue component of the color, from 0-255.
+  uint32 blue = 3;
+
+  // The alpha component of the color, from 0-255.
+  float alpha = 4;
+}

@@ -42,6 +42,26 @@ message Modifier {
   optional bool visible = 13;
   optional float weight = 14;
 }
+message ColorModifier {
+  oneof color {
+    ColorToken token = 1;
+    ColorValue value = 2;
+  }
+}
+enum ColorToken {
+  TOKEN_1 = 0;
+  TOKEN_2 = 1;
+}
+message ColorValue {
+  // The red component of the color, from 0-255.
+  uint32 red = 1;
+  // The green component of the color, from 0-255.
+  uint32 green = 2;
+  // The blue component of the color, from 0-255.
+  uint32 blue = 3;
+  // The alpha component of the color, from 0-255.
+  float alpha = 4;
+}
 message SizeModifier {
 }
 message InsetsModifier {
@@ -64,7 +84,7 @@ message ElementComponent {
     CheckBoxComponent checkbox = 8; // Used to create a checkbox
     RadioButtonComponent radio_button = 9; // Used to create a radio button
     PickerComponent picker = 10; // Used to create a dropdown list
-    ToolbarItemComponent tool_bar_item = 11; // Used to create a toolbar
+    TopAppBarComponent top_app_bar = 11; // Used to create a toolbar
     NavigationViewItemComponent navigation_view_item = 12; // Used to create a navigation bar
     AlertComponent alert = 13; // Used to create an alert dialog
     ActionSheetComponent action_sheet = 14; // Used to create an action sheet
@@ -97,114 +117,155 @@ message LayoutComponent {
 // NavigationViewItem Element used to create an item for a navigation view.
 message NavigationViewItemComponent {
   // Text to display for the item.
-  string text = 1;
-  // Image to display for the item.
-  Particle image = 2;
+  Particle text = 1;
+  // Icon to display for the item.
+  Particle icon = 2;
+  // Whether this item is selected.
+  bool selected = 3;
 }
-// Picker Element used to create a dropdown list
+// TopBarItem Element used to create an item for a toolbar.
+message TopAppBarComponent {
+  // Text to display for the item.
+  optional Particle title = 1;
+  // Navigation icon to display for the item.
+  optional Particle navigation_icon = 2;
+  // Action icon to display for the item.
+  optional Particle action_icon = 3;
+}
+// Picker layout used to create a dropdown list
 message PickerComponent {
   // The list of options available in the dropdown
-  repeated string options = 1;
-  // The initial value of the dropdown
-  string value = 2;
-  // The function to be executed when the value of the dropdown changes
-  string onValueChange = 3;
+  repeated Particle options = 1;
+  // The currently selected item ID in the dropdown
+  string selected_option = 2;
 }
 // Toggle Element used to create a toggle switch
 message ToggleComponent {
-  // The label displayed next to the toggle switch
+  // The text label for the toggle switch.
   string label = 1;
-  // The initial state of the toggle switch
-  bool value = 2;
-  // The function to be executed when the state of the toggle switch changes
-  string onValueChange = 3;
+  // Whether the toggle switch is currently in the "on" or "off" position.
+  bool isChecked = 2;
 }
 // RadioButton Element used to create a radio button
 message RadioButtonComponent {
-  // The label displayed next to the radio button
-  string label = 1;
-  // The initial state of the radio button
-  bool value = 2;
-  // The function to be executed when the state of the radio button changes
-  string onValueChange = 3;
+  // Whether the RadioButton is selected
+  optional bool selected = 1;
+  // Whether the RadioButton is enabled
+  optional bool enabled = 2;
+  // Color of the RadioButton when selected
+  optional ColorModifier selectedColor = 3;
+  // Color of the RadioButton when not selected
+  optional ColorModifier unselectedColor = 4;
+  // Color of the  RadioButton when disabled
+  optional ColorModifier disabledColor = 5;
 }
 // Alert Element used to create an alert.
 message AlertComponent {
   // Title of the alert.
-  string title = 1;
+  optional string title = 1;
   // Message to display in the alert.
-  string message = 2;
+  optional string message = 2;
+  // Button to confirm the alert.
+  optional Particle confirmButton = 3;
   // Button to dismiss the alert.
-  Particle dismissButton = 3;
+  optional Particle dismissButton = 4;
 }
-// TextEditor Element used to create a multi-line text input field
+// TextEditor Element used to create a multi-line text editor
 message TextEditorComponent {
-  // The text prompt to be displayed as a placeholder in the text editor
-  string prompt = 1;
+  // Optional placeholder text to display when the editor is empty
+  optional string placeholder = 1;
   // The initial value of the text editor
-  string value = 2;
-  // Function to be executed when the text in the editor changes
-  string onValueChange = 3;
+  optional string value = 2;
 }
 // Button Element used to create a clickable button
 message ButtonComponent {
-  // Text displayed on the button
-  string label = 1;
+  // Element(s) displayed on the button
+  Particle elements = 1;
 }
 // Image Element used to display an image
 message ImageComponent {
-  // The URL or resource identifier of the image to be displayed
-  string source = 1;
-  // The alternate text to be displayed in case the image is not available
-  string alt = 2;
+  // The URL of the image.
+  string url = 1;
+  // The localized description of the image.
+  string description = 2;
+  // Whether to display the image as a circular shape.
+  bool circular = 4;
+  // Whether to load the local resource
+  bool local = 5;
+  // The content mode of the image.
+  ContentMode content_mode = 6;
 }
-// ToolbarItem Element used to create an item for a toolbar.
-message ToolbarItemComponent {
-  // Text to display for the item.
-  string text = 1;
-  // Image to display for the item.
-  Particle image = 2;
+enum ContentMode {
+  SCALE_TO_FIT = 0;
+  SCALE_ASPECT_FIT = 1;
+  SCALE_ASPECT_FILL = 2;
 }
 // Text Element used to display text
 message TextComponent {
   // The text content to be displayed
   string content = 1;
+  // The name of the font family, such as "Arial".
+  optional FontFamily fontFamily = 2;
+  // The size of the font, in points.
+  optional SizeModifier fontSize = 3;
+  // Whether the text is bold or not.
+  optional bool bold = 4;
+  // Whether the text is italic or not.
+  optional bool italic = 5;
+  // Whether the text is underlined or not.
+  optional bool underline = 6;
+  // Whether the text has a strikethrough line or not.
+  optional  bool strikethrough = 7;
+  // The color of the text, specified as a hex code or name.
+  optional  ColorModifier color = 8;
 }
-// TextField Element used to create a text input field
+enum FontFamily {
+  UNDEFINED = 0;
+  SYSTEM_DEFAULT = 1;
+  SANS_SERIF = 2;
+  SERIF = 3;
+  MONOSPACE = 4;
+  CUSTOM_FONT = 5;
+}
+// TextField Element used to create a text field
 message TextFieldComponent {
-  // The text prompt to be displayed as a placeholder in the text field
-  string prompt = 1;
+  // Optional placeholder text to display when the field is empty
+  optional string placeholder = 1;
   // The initial value of the text field
-  string value = 2;
-  // Function to be executed when the text in the field changes
-  string onValueChange = 3;
+  optional string value = 2;
 }
 // Slider Element used to create a slider
 message SliderComponent {
-  // The initial value of the slider
-  double value = 1;
-  // The minimum value of the slider
-  double minValue = 2;
-  // The maximum value of the slider
-  double maxValue = 3;
-  // The function to be executed when the value of the slider changes
-  string onValueChange = 4;
+  // Minimum value of the slider
+  optional float min = 1;
+  // Maximum value of the slider
+  optional float max = 2;
+  // Default value of the slider
+  optional float defaultValue = 3;
+  // Current value of the slider
+  optional float currentValue = 4;
+  // Optional label for the slider
+  optional string label = 5;
 }
 // CheckBox Element used to create a checkbox
 message CheckBoxComponent {
   // The label displayed next to the checkbox
-  string label = 1;
+  optional string label = 1;
   // The initial state of the checkbox
-  bool value = 2;
-  // The function to be executed when the state of the checkbox changes
-  string onValueChange = 3;
+  optional bool isChecked = 2;
+  // The color of the checkbox when it is not selected.
+  optional ColorModifier uncheckedColor = 3;
+  // The color of the checkbox when it is selected.
+  optional ColorModifier checkedColor = 4;
 }
 // ActionSheet Element used to create an action sheet.
+// In Jetpack Compose, we can use the combination of `DropdownMenu` and `Text` to implement an ActionSheet
+// that pops up from the bottom.
 message ActionSheetComponent {
   // Title of the action sheet.
-  string title = 1;
+  optional string title = 1;
   // Message to display in the action sheet.
-  string message = 2;
+  optional string message = 2;
   // Buttons to display in the action sheet.
   repeated Particle buttons = 3;
 }

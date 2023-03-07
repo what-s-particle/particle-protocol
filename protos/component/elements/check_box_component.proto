@@ -2,12 +2,16 @@ syntax = "proto3";
 
 package com.yunlong.particle.proto;
 
+import "protos/modifiers/color_modifier.proto";
+
 // CheckBox Element used to create a checkbox
 message CheckBoxComponent {
   // The label displayed next to the checkbox
-  string label = 1;
+  optional string label = 1;
   // The initial state of the checkbox
-  bool value = 2;
-  // The function to be executed when the state of the checkbox changes
-  string onValueChange = 3;
+  optional bool isChecked = 2;
+  // The color of the checkbox when it is not selected.
+  optional ColorModifier uncheckedColor = 3;
+  // The color of the checkbox when it is selected.
+  optional ColorModifier checkedColor = 4;
 }

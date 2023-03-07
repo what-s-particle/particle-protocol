@@ -2,12 +2,18 @@ syntax = "proto3";
 
 package com.yunlong.particle.proto;
 
+import "protos/modifiers/color_modifier.proto"
+
 // RadioButton Element used to create a radio button
 message RadioButtonComponent {
-  // The label displayed next to the radio button
-  string label = 1;
-  // The initial state of the radio button
-  bool value = 2;
-  // The function to be executed when the state of the radio button changes
-  string onValueChange = 3;
+  // Whether the RadioButton is selected
+  optional bool selected = 1;
+  // Whether the RadioButton is enabled
+  optional bool enabled = 2;
+  // Color of the RadioButton when selected
+  optional ColorModifier selectedColor = 3;
+  // Color of the RadioButton when not selected
+  optional ColorModifier unselectedColor = 4;
+  // Color of the  RadioButton when disabled
+  optional ColorModifier disabledColor = 5;
 }
