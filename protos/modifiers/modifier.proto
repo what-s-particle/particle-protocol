@@ -4,7 +4,7 @@ package com.yunlong.particle.proto;
 
 import "protos/modifiers/insets_modifier.proto";
 import "protos/modifiers/size_modifier.proto";
-import "protos/modifiers/background_modifier.proto";
+import "protos/modifiers/color_modifier.proto";
 import "protos/modifiers/offet_modifier.proto";
 import "protos/modifiers/border_modifier.proto";
 import "protos/modifiers/shadow_modifier.proto";
@@ -27,7 +27,7 @@ import "protos/modifiers/custom_modifier.proto";
 
 message Modifier {
   repeated CustomModifier custom = 1;
-  optional BackgroundModifier background = 2;
+  optional ColorModifier background = 2;
   optional OffsetModifier blur = 3;
   optional BorderModifier border = 4;
   optional bool clickable = 5;

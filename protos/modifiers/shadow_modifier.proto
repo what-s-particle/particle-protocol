@@ -3,6 +3,8 @@ syntax = "proto3";
 package com.yunlong.particle.proto;
 
 
-message ShadowModifier {
-
+enum ShadowModifier {
+  DEFAULT = 0;
+  SHADOW_1 = 1;
+  SHADOW_2 = 2;
 }

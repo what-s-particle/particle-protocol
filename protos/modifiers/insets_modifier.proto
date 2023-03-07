@@ -2,7 +2,11 @@ syntax = "proto3";
 
 package com.yunlong.particle.proto;
 
+import "protos/modifiers/size_modifier.proto";
 
 message InsetsModifier {
-
+  optional SizeModifier left = 1;
+  optional SizeModifier top = 2;
+  optional SizeModifier right = 3;
+  optional SizeModifier bottom = 4;
 }
