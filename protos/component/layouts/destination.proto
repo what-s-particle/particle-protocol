@@ -8,15 +8,3 @@ message Destination {
   string route = 1;
   Particle content = 2;
 }
-
-
-
-
-
-
-
-
-
-
-
-

@@ -133,6 +133,7 @@ message LayoutComponent {
     LazyRowComponent lazy_row = 5;
     TabViewComponent tab_view = 6;
     NavigationViewComponent navigation_view = 7;
+    Destination destination = 8;
   }
 }
 // TopBarItem Element used to create an item for a toolbar.

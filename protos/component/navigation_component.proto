@@ -9,13 +9,3 @@ message NavigationComponent {
   repeated Particle destinations = 2;
   string startDestination = 3;
 }
-
-
-
-
-
-
-
-
-
-
