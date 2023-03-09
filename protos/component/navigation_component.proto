@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+import "protos/particle.proto";
+
+message NavigationComponent {
+  string name = 1;
+  repeated Particle destinations = 2;
+  string startDestination = 3;
+}

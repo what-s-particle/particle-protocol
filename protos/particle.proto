@@ -4,6 +4,7 @@ package com.yunlong.particle.proto;
 
 import "protos/component/element_component.proto";
 import "protos/component/layout_component.proto";
+import "protos/component/navigation_component.proto";
 import "protos/interaction/interaction.proto";
 import "protos/modifiers/modifier.proto";
 
@@ -12,7 +13,8 @@ message Particle {
   oneof component {
     ElementComponent element = 2;
     LayoutComponent layout = 3;
+    NavigationComponent navigation = 4;
   }
-  Modifier modifier = 4;
-  repeated Interaction interactions = 5;
+  optional Modifier modifier = 5;
+  repeated Interaction interactions = 6;
 }

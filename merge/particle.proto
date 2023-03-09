@@ -6,9 +6,10 @@ message Particle {
   oneof component {
     ElementComponent element = 2;
     LayoutComponent layout = 3;
+    NavigationComponent navigation = 4;
   }
-  Modifier modifier = 4;
-  repeated Interaction interactions = 5;
+  optional Modifier modifier = 5;
+  repeated Interaction interactions = 6;
 }
 message BorderModifier {
   int32 width = 1;
@@ -90,6 +91,11 @@ message OffsetModifier {
   SizeModifier xOffset = 1;
   SizeModifier yOffset = 2;
 }
+message NavigationComponent {
+  string name = 1;
+  repeated Particle destinations = 2;
+  string startDestination = 3;
+}
 message ElementComponent {
   oneof element {
     ButtonComponent button = 1; // Used to create a clickable button
@@ -127,6 +133,7 @@ message LayoutComponent {
     LazyRowComponent lazy_row = 5;
     TabViewComponent tab_view = 6;
     NavigationViewComponent navigation_view = 7;
+    Destination destination = 8;
   }
 }
 // TopBarItem Element used to create an item for a toolbar.
@@ -321,6 +328,10 @@ enum Arrangement {
   SPACE_BETWEEN = 6;
   SPACE_AROUND = 7;
 }
+message Destination {
+  string route = 1;
+  Particle content = 2;
+}
 // Z-axis stack layout component.
 message BoxComponent {
   // Child elements in the component.
@@ -473,7 +484,8 @@ message CustomAction {
 }
 // Action to open a new screen
 message NavigateToAction {
-  string target = 1;
+  // route of destination
+  string route = 1;
   optional NavigationMode mode = 2;
 }
 // Action of if else

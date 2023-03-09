@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+import "protos/particle.proto";
+
+message Destination {
+  string route = 1;
+  Particle content = 2;
+}
