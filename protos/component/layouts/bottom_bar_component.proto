@@ -8,7 +8,6 @@ import "protos/particle.proto";
 message BottomBarComponent {
   // Child elements in the component.
   repeated Particle elements = 1;
-  repeated Particle bars = 2;
   // The currently selected item id in the NavigationView
-  string selected_element = 3;
+  string selected_element = 2;
 }

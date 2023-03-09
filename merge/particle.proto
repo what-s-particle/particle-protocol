@@ -103,7 +103,7 @@ message ElementComponent {
     RadioButtonComponent radio_button = 9; // Used to create a radio button
     PickerComponent picker = 10; // Used to create a dropdown list
     TopAppBarComponent top_app_bar = 11; // Used to create a toolbar
-    NavigationBarItemComponent navigation_view_item = 12; // Used to create a navigation bar
+    BottomBarItemComponent bottom_bar_item = 12; // Used to create a bottom bar
     AlertComponent alert = 13; // Used to create an alert dialog
     ActionSheetComponent action_sheet = 14; // Used to create an action sheet
   }
@@ -157,6 +157,15 @@ message ToggleComponent {
   // Whether the toggle switch is currently in the "on" or "off" position.
   bool isChecked = 2;
 }
+// BottomBarItem Element used to create an item for a bottom bar.
+message BottomBarItemComponent {
+  // Text to display for the item.
+  Particle text = 1;
+  // Icon to display for the item.
+  Particle icon = 2;
+  // Whether this item is selected.
+  bool selected = 3;
+}
 // RadioButton Element used to create a radio button
 message RadioButtonComponent {
   // Whether the RadioButton is selected
@@ -181,15 +190,6 @@ message AlertComponent {
   // Button to dismiss the alert.
   optional Particle dismissButton = 4;
   optional Particle icon = 5;
-}
-// NavigationViewItem Element used to create an item for a navigation view.
-message NavigationBarItemComponent {
-  // Text to display for the item.
-  Particle text = 1;
-  // Icon to display for the item.
-  Particle icon = 2;
-  // Whether this item is selected.
-  bool selected = 3;
 }
 // TextEditor Element used to create a multi-line text editor
 message TextEditorComponent {
@@ -315,9 +315,8 @@ message ModalDrawerComponent {
 message BottomBarComponent {
   // Child elements in the component.
   repeated Particle elements = 1;
-  repeated Particle bars = 2;
   // The currently selected item id in the NavigationView
-  string selected_element = 3;
+  string selected_element = 2;
 }
 enum Arrangement {
   START = 0;
