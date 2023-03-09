@@ -4,8 +4,8 @@ package com.yunlong.particle.proto;
 
 import "protos/particle.proto";
 
-// NavigationViewItem Element used to create an item for a navigation view.
-message NavigationBarItemComponent {
+// BottomBarItem Element used to create an item for a bottom bar.
+message BottomBarItemComponent {
   // Text to display for the item.
   Particle text = 1;
   // Icon to display for the item.

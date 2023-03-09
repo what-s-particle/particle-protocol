@@ -7,7 +7,7 @@ import "protos/component/elements/alert_component.proto";
 import "protos/component/elements/button_component.proto";
 import "protos/component/elements/check_box_component.proto";
 import "protos/component/elements/image_component.proto";
-import "protos/component/elements/navigation_bar_item_component.proto";
+import "protos/component/elements/bottom_bar_item_component.proto";
 import "protos/component/elements/picker_component.proto";
 import "protos/component/elements/radio_button_component.proto";
 import "protos/component/elements/slider_component.proto";
@@ -31,7 +31,7 @@ message ElementComponent {
     RadioButtonComponent radio_button = 9; // Used to create a radio button
     PickerComponent picker = 10; // Used to create a dropdown list
     TopAppBarComponent top_app_bar = 11; // Used to create a toolbar
-    NavigationBarItemComponent navigation_view_item = 12; // Used to create a navigation bar
+    BottomBarItemComponent bottom_bar_item = 12; // Used to create a bottom bar
     AlertComponent alert = 13; // Used to create an alert dialog
     ActionSheetComponent action_sheet = 14; // Used to create an action sheet
   }
