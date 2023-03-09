@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+import "protos/particle.proto";
+import "protos/modifiers/color_modifier.proto";
+
+// TopBar view layout component.
+message TopBarComponent {
+  Particle title = 1;
+  Particle navigationIcon = 2;
+  repeated Particle actions = 3;
+  int32 elevation = 4;
+  ColorModifier   backgroundColor = 5;
+  ColorModifier  contentColor = 6;
+
+}

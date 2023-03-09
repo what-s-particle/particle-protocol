@@ -4,8 +4,8 @@ package com.yunlong.particle.proto;
 
 import "protos/particle.proto";
 
-// Navigation view layout component.
-message NavigationViewComponent {
+// BottomBar view layout component.
+message BottomBarComponent {
   // Child elements in the component.
   repeated Particle elements = 1;
   repeated Particle bars = 2;
