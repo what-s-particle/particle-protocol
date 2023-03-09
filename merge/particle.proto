@@ -6,10 +6,9 @@ message Particle {
   oneof component {
     ElementComponent element = 2;
     LayoutComponent layout = 3;
-    NavigationComponent navigation = 4;
   }
-  optional Modifier modifier = 5;
-  repeated Interaction interactions = 6;
+  optional Modifier modifier = 4;
+  repeated Interaction interactions = 5;
 }
 message BorderModifier {
   int32 width = 1;
@@ -91,11 +90,6 @@ message OffsetModifier {
   SizeModifier xOffset = 1;
   SizeModifier yOffset = 2;
 }
-message NavigationComponent {
-  string name = 1;
-  repeated Particle destinations = 2;
-  string startDestination = 3;
-}
 message ElementComponent {
   oneof element {
     ButtonComponent button = 1; // Used to create a clickable button
@@ -126,14 +120,18 @@ message ElementComponent {
 //  which contains the child elements or tabs within the container.
 message LayoutComponent {
   oneof component {
-    RowComponent row = 1;
-    ColumnComponent column = 2;
-    BoxComponent box = 3;
-    LazyColumnComponent lazy_column = 4;
-    LazyRowComponent lazy_row = 5;
-    TabViewComponent tab_view = 6;
-    NavigationViewComponent navigation_view = 7;
-    Destination destination = 8;
+    ScaffoldComponent scaffold = 1;
+    RowComponent row = 2;
+    ColumnComponent column = 3;
+    BoxComponent box = 4;
+    LazyColumnComponent lazy_column = 5;
+    LazyRowComponent lazy_row = 6;
+    TabViewComponent tab_view = 7;
+    TopBarComponent top_bar = 8;
+    BottomBarComponent bottom_bar = 9;
+    GraphComponent graph = 10;
+    ModalDrawerComponent modal_drawer = 11;
+    Destination destination = 12;
   }
 }
 // TopBarItem Element used to create an item for a toolbar.
@@ -310,8 +308,11 @@ message LazyRowComponent {
   optional bool reverse_layout = 5;
   optional InsetsModifier content_padding = 6;
 }
-// Navigation view layout component.
-message NavigationViewComponent {
+message ModalDrawerComponent {
+  Particle content = 1;
+}
+// BottomBar view layout component.
+message BottomBarComponent {
   // Child elements in the component.
   repeated Particle elements = 1;
   repeated Particle bars = 2;
@@ -336,6 +337,15 @@ message Destination {
 message BoxComponent {
   // Child elements in the component.
   repeated Particle elements = 1;
+}
+// TopBar view layout component.
+message TopBarComponent {
+  Particle title = 1;
+  Particle navigationIcon = 2;
+  repeated Particle actions = 3;
+  int32 elevation = 4;
+  ColorModifier   backgroundColor = 5;
+  ColorModifier  contentColor = 6;
 }
 // Lazy column layout component.
 message LazyColumnComponent {
@@ -376,6 +386,16 @@ message RowComponent {
   optional Arrangement arrangement = 2;
   optional Alignment alignment = 3;
   optional SizeModifier spacing = 4;
+}
+// Scaffold component.
+message ScaffoldComponent {
+  // Child elements in the component.
+  repeated Particle elements = 1;
+}
+message GraphComponent {
+  string name = 1;
+  repeated Particle destinations = 2;
+  string startDestination = 3;
 }
 // Tab view layout component.
 message TabViewComponent {

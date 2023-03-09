@@ -4,7 +4,7 @@ package com.yunlong.particle.proto;
 
 import "protos/particle.proto";
 
-message NavigationComponent {
+message GraphComponent {
   string name = 1;
   repeated Particle destinations = 2;
   string startDestination = 3;
