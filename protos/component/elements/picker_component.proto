@@ -9,6 +9,6 @@ message PickerComponent {
   // The list of options available in the dropdown
   repeated Particle options = 1;
   // The currently selected item ID in the dropdown
-  string selected_option = 2;
+  string selectedOption = 2;
 }
 

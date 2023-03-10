@@ -23,17 +23,17 @@ message ElementComponent {
     ButtonComponent button = 1; // Used to create a clickable button
     TextComponent label = 2; // Used to display text
     ImageComponent image = 3; // Used to display an image
-    TextFieldComponent text_field = 4; // Used to create a text input field
-    TextEditorComponent text_editor = 5; // Used to create a multiline text input field
+    TextFieldComponent textField = 4; // Used to create a text input field
+    TextEditorComponent textEditor = 5; // Used to create a multiline text input field
     SliderComponent slider = 6; // Used to create a slider
     ToggleComponent toggle = 7; // Used to create a switch toggle
     CheckBoxComponent checkbox = 8; // Used to create a checkbox
-    RadioButtonComponent radio_button = 9; // Used to create a radio button
+    RadioButtonComponent radioButton = 9; // Used to create a radio button
     PickerComponent picker = 10; // Used to create a dropdown list
-    TopAppBarComponent top_app_bar = 11; // Used to create a toolbar
-    BottomBarItemComponent bottom_bar_item = 12; // Used to create a bottom bar
+    TopAppBarComponent topAppBar = 11; // Used to create a toolbar
+    BottomBarItemComponent bottomBarItem = 12; // Used to create a bottom bar
     AlertComponent alert = 13; // Used to create an alert dialog
-    ActionSheetComponent action_sheet = 14; // Used to create an action sheet
+    ActionSheetComponent actionSheet = 14; // Used to create an action sheet
   }
 }
 

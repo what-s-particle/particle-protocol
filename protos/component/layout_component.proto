@@ -29,16 +29,16 @@ import "protos/component/layouts/screen.proto";
 
 message LayoutComponent {
   oneof component {
-    NavGraphComponent nav_graph = 1;
-    Screen screen = 2;
-    TopBarComponent top_bar = 3;
-    BottomBarComponent bottom_bar = 4;
-    ModalDrawerComponent modal_drawer = 5;
+    NavGraphComponent navGraph = 1;
+    ScreenComponent screen = 2;
+    TopBarComponent topBar = 3;
+    BottomBarComponent bottomBar = 4;
+    ModalDrawerComponent modalDrawer = 5;
     RowComponent row = 6;
     ColumnComponent column = 7;
     BoxComponent box = 8;
-    LazyColumnComponent lazy_column = 9;
-    LazyRowComponent lazy_row = 10;
-    TabViewComponent tab_view = 11;
+    LazyColumnComponent lazyColumn = 9;
+    LazyRowComponent lazyRow = 10;
+    TabViewComponent tabView = 11;
   }
 }

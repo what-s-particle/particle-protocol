@@ -9,7 +9,7 @@ message TopAppBarComponent {
   // Text to display for the item.
   optional Particle title = 1;
   // Navigation icon to display for the item.
-  optional Particle navigation_icon = 2;
+  optional Particle navigationIcon = 2;
   // Action icon to display for the item.
-  optional Particle action_icon = 3;
+  optional Particle actionIcon = 3;
 }

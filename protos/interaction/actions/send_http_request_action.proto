@@ -9,8 +9,8 @@ message SendHttpRequestAction {
   string endpoint = 1;
   RequestType type = 2;
   map<string, string> body = 3;
-  repeated Action success_actions = 4;
-  repeated Action failure_actions = 5;
+  repeated Action successActions = 4;
+  repeated Action failureActions = 5;
 }
 
 enum RequestType{

@@ -15,8 +15,8 @@ message TabViewComponent {
   // and it will appear visually disabled and disabled to accessibility services.
   bool enabled = 3;
   // the color for the content of this tab when selected, and the color of the ripple.
-  optional ColorModifier selected_color = 4;
+  optional ColorModifier selectedColor = 4;
   // the color for the content of this tab when not selected
-  optional ColorModifier unselected_color = 5;
+  optional ColorModifier unselectedColor = 5;
 
 }

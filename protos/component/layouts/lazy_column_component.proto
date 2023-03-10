@@ -15,7 +15,7 @@ message LazyColumnComponent {
   optional Arrangement arrangement = 2;
   optional Alignment alignment = 3;
   optional SizeModifier spacing = 4;
-  optional bool reverse_layout = 5;
-  optional InsetsModifier content_padding = 6;
+  optional bool reverseLayout = 5;
+  optional InsetsModifier contentPadding = 6;
 
 }

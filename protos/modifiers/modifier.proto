@@ -35,7 +35,7 @@ message Modifier {
   optional OffsetModifier offset = 7;
   optional float opacity = 8;
   optional InsetsModifier padding = 9;
-  optional SizeModifier require_size = 10;
+  optional SizeModifier requireSize = 10;
   optional ShadowModifier shadow = 11;
   optional SizeModifier size = 12;
   optional bool visible = 13;

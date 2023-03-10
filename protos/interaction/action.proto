@@ -25,22 +25,22 @@ message Action {
     // Action to define by Particle user
     CustomAction custom = 1;
     // Action to open a new screen
-    NavigateToAction navigate_to = 2;
+    NavigateToAction navigateTo = 2;
     // Action to open previous screen
-    NavigateBackAction navigate_back = 3;
+    NavigateBackAction navigateBack = 3;
     // Action to show a dialog
-    ShowDialogAction show_dialog = 4;
+    ShowDialogAction showDialog = 4;
     // Action to show a menu
-    ShowMenuAction show_menu = 5;
+    ShowMenuAction showMenu = 5;
     // Action to update the UI modifier
-    UpdateModifierAction update_modifier = 6;
+    UpdateModifierAction updateModifier = 6;
     // Action to store data
-    StoreDataAction store_data = 7;
+    StoreDataAction storeData = 7;
     // Action to send an HTTP request
-    SendHttpRequestAction send_http_request = 8;
+    SendHttpRequestAction sendHttpRequest = 8;
     // Action to open the browser, mailbox, phone, camera, etc.
-    OpenExternalAppAction open_external_app = 9;
+    OpenExternalAppAction openExternalApp = 9;
     ConditionAction condition = 10;
-    RetrieveDataAction retrieve_data = 11;
+    RetrieveDataAction retrieveData = 11;
   }
 }

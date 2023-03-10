@@ -9,5 +9,5 @@ message BottomBarComponent {
   // Child elements in the component.
   repeated Particle elements = 1;
   // The currently selected item id in the NavigationView
-  string selected_element = 2;
+  string selectedElement = 2;
 }

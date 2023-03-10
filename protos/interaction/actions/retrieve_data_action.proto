@@ -8,5 +8,5 @@ import "protos/interaction/action.proto"
 message RetrieveDataAction {
   string key = 1;
   string value = 2;
-  repeated Action subsequent_action = 3;
+  repeated Action subsequentAction = 3;
 }
