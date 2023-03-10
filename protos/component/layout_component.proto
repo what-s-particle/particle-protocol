@@ -11,7 +11,6 @@ import "protos/component/layouts/column_component.proto";
 import "protos/component/layouts/box_component.proto";
 import "protos/component/layouts/nav_graph_component.proto";
 import "protos/component/layouts/top_bar_component.proto";
-import "protos/component/layouts/container_component.proto";
 import "protos/component/layouts/modal_drawer.proto";
 import "protos/component/layouts/screen.proto";
 
@@ -30,17 +29,16 @@ import "protos/component/layouts/screen.proto";
 
 message LayoutComponent {
   oneof component {
-    ContainerComponent container = 1;
-    RowComponent row = 2;
-    ColumnComponent column = 3;
-    BoxComponent box = 4;
-    LazyColumnComponent lazy_column = 5;
-    LazyRowComponent lazy_row = 6;
-    TabViewComponent tab_view = 7;
-    TopBarComponent top_bar = 8;
-    BottomBarComponent bottom_bar = 9;
-    NavGraphComponent nav_graph = 10;
-    ModalDrawerComponent modal_drawer = 11;
-    Screen screen = 12;
+    NavGraphComponent nav_graph = 1;
+    Screen screen = 2;
+    TopBarComponent top_bar = 3;
+    BottomBarComponent bottom_bar = 4;
+    ModalDrawerComponent modal_drawer = 5;
+    RowComponent row = 6;
+    ColumnComponent column = 7;
+    BoxComponent box = 8;
+    LazyColumnComponent lazy_column = 9;
+    LazyRowComponent lazy_row = 10;
+    TabViewComponent tab_view = 11;
   }
 }
