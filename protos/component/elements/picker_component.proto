@@ -3,12 +3,15 @@ syntax = "proto3";
 package com.yunlong.particle.proto;
 
 import "protos/particle.proto";
+import "protos/interaction/event.proto";
 
 // Picker layout used to create a dropdown list
 message PickerComponent {
+  // What to show when not expanded
+  Particle iconContent = 1;
   // The list of options available in the dropdown
-  repeated Particle options = 1;
-  // The currently selected item ID in the dropdown
-  string selectedOption = 2;
+  repeated Particle options = 2;
+  // Event that triggers its expansion
+  Event trigger = 3;
 }
 
