@@ -2,17 +2,79 @@ syntax = "proto3";
 
 package com.yunlong.particle.proto;
 
-import "protos/component/element_component.proto";
-import "protos/component/layout_component.proto";
 import "protos/interaction/interaction.proto";
 import "protos/modifiers/modifier.proto";
+import "protos/component/layouts/row_component.proto";
+import "protos/component/layouts/lazy_column_component.proto";
+import "protos/component/layouts/lazy_row_component.proto";
+import "protos/component/layouts/bottom_bar_component.proto";
+import "protos/component/layouts/tab_view_component.proto";
+import "protos/component/layouts/column_component.proto";
+import "protos/component/layouts/box_component.proto";
+import "protos/component/layouts/nav_graph_component.proto";
+import "protos/component/layouts/top_bar_component.proto";
+import "protos/component/layouts/modal_drawer.proto";
+import "protos/component/layouts/screen.proto";
+import "protos/component/elements/action_sheet_component.proto";
+import "protos/component/elements/alert_component.proto";
+import "protos/component/elements/button_component.proto";
+import "protos/component/elements/check_box_component.proto";
+import "protos/component/elements/image_component.proto";
+import "protos/component/elements/bottom_bar_item_component.proto";
+import "protos/component/elements/picker_component.proto";
+import "protos/component/elements/radio_button_component.proto";
+import "protos/component/elements/slider_component.proto";
+import "protos/component/elements/text_component.proto";
+import "protos/component/elements/text_editor_component.proto";
+import "protos/component/elements/text_field_component.proto";
+import "protos/component/elements/toggle_component.proto";
+import "protos/component/elements/top_app_bar_component.proto";
+import "protos/component/elements/icon_component.proto";
 
 message Particle {
   string id = 1;
+  optional Modifier modifier = 2;
+  repeated Interaction interactions = 3;
   oneof component {
-    ElementComponent element = 2;
-    LayoutComponent layout = 3;
+    ButtonComponent button = 10; // Used to create a clickable button
+    TextComponent label = 11; // Used to display text
+    ImageComponent image = 12; // Used to display an image
+    TextFieldComponent textField = 13; // Used to create a text input field
+    TextEditorComponent textEditor = 14; // Used to create a multiline text input field
+    SliderComponent slider = 15; // Used to create a slider
+    ToggleComponent toggle = 16; // Used to create a switch toggle
+    CheckBoxComponent checkbox = 17; // Used to create a checkbox
+    RadioButtonComponent radioButton = 18; // Used to create a radio button
+    PickerComponent picker = 19; // Used to create a dropdown list
+    IconComponent icon = 20; // Used to create a icon
+    BottomBarItemComponent bottomBarItem = 21; // Used to create a bottom bar
+    AlertComponent alert = 22; // Used to create an alert dialog
+    ActionSheetComponent actionSheet = 23; // Used to create an action sheet
+
+
+    //  Layout container types.
+    //  HStack: a horizontal stack layout container that contains child elements
+    //  VStack: a vertical stack layout container that contains child elements
+    //  ZStack: a Z-axis stack layout container that contains child elements
+    //  LazyColumn: a lazy column layout container that contains child elements
+    //  LazyRow: a lazy row layout container that contains child elements
+    //  TabView: a tab view layout container that contains child tabs
+    //  NavigationView: a navigation view layout container that contains child elements
+
+    //  NOTE: Each of the layout container types includes a repeated field called `elements` or `tabs`,
+    //  which contains the child elements or tabs within the container.
+
+
+    NavGraphComponent navGraph = 100;
+    ScreenComponent screen = 101;
+    TopBarComponent topBar = 102;
+    BottomBarComponent bottomBar = 103;
+    ModalDrawerComponent modalDrawer = 104;
+    RowComponent row = 105;
+    ColumnComponent column = 106;
+    BoxComponent box = 107;
+    LazyColumnComponent lazyColumn = 108;
+    LazyRowComponent lazyRow = 109;
+    TabViewComponent tabView = 110;
   }
-  optional Modifier modifier = 4;
-  repeated Interaction interactions = 5;
 }

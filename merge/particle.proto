@@ -3,12 +3,45 @@ package com.yunlong.particle.proto;
 
 message Particle {
   string id = 1;
+  optional Modifier modifier = 2;
+  repeated Interaction interactions = 3;
   oneof component {
-    ElementComponent element = 2;
-    LayoutComponent layout = 3;
+    ButtonComponent button = 10; // Used to create a clickable button
+    TextComponent label = 11; // Used to display text
+    ImageComponent image = 12; // Used to display an image
+    TextFieldComponent textField = 13; // Used to create a text input field
+    TextEditorComponent textEditor = 14; // Used to create a multiline text input field
+    SliderComponent slider = 15; // Used to create a slider
+    ToggleComponent toggle = 16; // Used to create a switch toggle
+    CheckBoxComponent checkbox = 17; // Used to create a checkbox
+    RadioButtonComponent radioButton = 18; // Used to create a radio button
+    PickerComponent picker = 19; // Used to create a dropdown list
+    IconComponent icon = 20; // Used to create a icon
+    BottomBarItemComponent bottomBarItem = 21; // Used to create a bottom bar
+    AlertComponent alert = 22; // Used to create an alert dialog
+    ActionSheetComponent actionSheet = 23; // Used to create an action sheet
+    //  Layout container types.
+    //  HStack: a horizontal stack layout container that contains child elements
+    //  VStack: a vertical stack layout container that contains child elements
+    //  ZStack: a Z-axis stack layout container that contains child elements
+    //  LazyColumn: a lazy column layout container that contains child elements
+    //  LazyRow: a lazy row layout container that contains child elements
+    //  TabView: a tab view layout container that contains child tabs
+    //  NavigationView: a navigation view layout container that contains child elements
+    //  NOTE: Each of the layout container types includes a repeated field called `elements` or `tabs`,
+    //  which contains the child elements or tabs within the container.
+    NavGraphComponent navGraph = 100;
+    ScreenComponent screen = 101;
+    TopBarComponent topBar = 102;
+    BottomBarComponent bottomBar = 103;
+    ModalDrawerComponent modalDrawer = 104;
+    RowComponent row = 105;
+    ColumnComponent column = 106;
+    BoxComponent box = 107;
+    LazyColumnComponent lazyColumn = 108;
+    LazyRowComponent lazyRow = 109;
+    TabViewComponent tabView = 110;
   }
-  optional Modifier modifier = 4;
-  repeated Interaction interactions = 5;
 }
 message BorderModifier {
   int32 width = 1;
@@ -40,7 +73,7 @@ message Modifier {
   optional OffsetModifier offset = 7;
   optional float opacity = 8;
   optional InsetsModifier padding = 9;
-  optional SizeModifier require_size = 10;
+  optional SizeModifier requireSize = 10;
   optional ShadowModifier shadow = 11;
   optional SizeModifier size = 12;
   optional bool visible = 13;
@@ -89,49 +122,6 @@ enum ShadowModifier {
 message OffsetModifier {
   SizeModifier xOffset = 1;
   SizeModifier yOffset = 2;
-}
-message ElementComponent {
-  oneof element {
-    ButtonComponent button = 1; // Used to create a clickable button
-    TextComponent label = 2; // Used to display text
-    ImageComponent image = 3; // Used to display an image
-    TextFieldComponent textField = 4; // Used to create a text input field
-    TextEditorComponent textEditor = 5; // Used to create a multiline text input field
-    SliderComponent slider = 6; // Used to create a slider
-    ToggleComponent toggle = 7; // Used to create a switch toggle
-    CheckBoxComponent checkbox = 8; // Used to create a checkbox
-    RadioButtonComponent radioButton = 9; // Used to create a radio button
-    PickerComponent picker = 10; // Used to create a dropdown list
-    TopAppBarComponent topAppBar = 11; // Used to create a toolbar
-    BottomBarItemComponent bottomBarItem = 12; // Used to create a bottom bar
-    AlertComponent alert = 13; // Used to create an alert dialog
-    ActionSheetComponent actionSheet = 14; // Used to create an action sheet
-  }
-}
-//  Layout container types.
-//  HStack: a horizontal stack layout container that contains child elements
-//  VStack: a vertical stack layout container that contains child elements
-//  ZStack: a Z-axis stack layout container that contains child elements
-//  LazyColumn: a lazy column layout container that contains child elements
-//  LazyRow: a lazy row layout container that contains child elements
-//  TabView: a tab view layout container that contains child tabs
-//  NavigationView: a navigation view layout container that contains child elements
-//  NOTE: Each of the layout container types includes a repeated field called `elements` or `tabs`,
-//  which contains the child elements or tabs within the container.
-message LayoutComponent {
-  oneof component {
-    NavGraphComponent navGraph = 1;
-    Screen screen = 2;
-    TopBarComponent topBar = 3;
-    BottomBarComponent bottomBar = 4;
-    ModalDrawerComponent modalDrawer = 5;
-    RowComponent row = 6;
-    ColumnComponent column = 7;
-    BoxComponent box = 8;
-    LazyColumnComponent lazyColumn = 9;
-    LazyRowComponent lazyRow = 10;
-    TabViewComponent tabView = 11;
-  }
 }
 // TopBarItem Element used to create an item for a toolbar.
 message TopAppBarComponent {
@@ -304,27 +294,27 @@ message LazyRowComponent {
   optional Arrangement arrangement = 2;
   optional Alignment alignment = 3;
   optional SizeModifier spacing = 4;
-  optional bool reverse_layout = 5;
-  optional InsetsModifier content_padding = 6;
+  optional bool reverseLayout = 5;
+  optional InsetsModifier contentPadding = 6;
 }
 message ModalDrawerComponent {
   Particle content = 1;
 }
 // Screen is inspired by Android's Scaffold and Navigation. This component contains the raw materials needed to build a visual app screen.
-message Screen {
+message ScreenComponent {
   string route = 1;
   optional string from = 2;
   Particle content = 3;
-  optional Particle bottom_bar = 4;
-  optional Particle top_bar_item = 5;
-  optional Particle modal_drawer = 6;
+  optional Particle bottomBar = 4;
+  optional Particle topBar = 5;
+  optional Particle modalDrawer = 6;
 }
 // BottomBar view layout component.
 message BottomBarComponent {
   // Child elements in the component.
   repeated Particle elements = 1;
   // The currently selected item id in the NavigationView
-  string selected_element = 2;
+  string selectedElement = 2;
 }
 message NavGraphComponent {
   string name = 1;
@@ -361,8 +351,8 @@ message LazyColumnComponent {
   optional Arrangement arrangement = 2;
   optional Alignment alignment = 3;
   optional SizeModifier spacing = 4;
-  optional bool reverse_layout = 5;
-  optional InsetsModifier content_padding = 6;
+  optional bool reverseLayout = 5;
+  optional InsetsModifier contentPadding = 6;
 }
 // Vertical stack layout component.
 message ColumnComponent {
@@ -405,9 +395,9 @@ message TabViewComponent {
   // and it will appear visually disabled and disabled to accessibility services.
   bool enabled = 3;
   // the color for the content of this tab when selected, and the color of the ripple.
-  optional ColorModifier selected_color = 4;
+  optional ColorModifier selectedColor = 4;
   // the color for the content of this tab when not selected
-  optional ColorModifier unselected_color = 5;
+  optional ColorModifier unselectedColor = 5;
 }
 // An interaction refers to any user-triggered event that occurs in a software application, such as clicking a button,
 // scrolling a page, or typing into a text field. Interactions can be used to initiate actions or events within
@@ -425,23 +415,23 @@ message Action {
     // Action to define by Particle user
     CustomAction custom = 1;
     // Action to open a new screen
-    NavigateToAction navigate_to = 2;
+    NavigateToAction navigateTo = 2;
     // Action to open previous screen
-    NavigateBackAction navigate_back = 3;
+    NavigateBackAction navigateBack = 3;
     // Action to show a dialog
-    ShowDialogAction show_dialog = 4;
+    ShowDialogAction showDialog = 4;
     // Action to show a menu
-    ShowMenuAction show_menu = 5;
+    ShowMenuAction showMenu = 5;
     // Action to update the UI modifier
-    UpdateModifierAction update_modifier = 6;
+    UpdateModifierAction updateModifier = 6;
     // Action to store data
-    StoreDataAction store_data = 7;
+    StoreDataAction storeData = 7;
     // Action to send an HTTP request
-    SendHttpRequestAction send_http_request = 8;
+    SendHttpRequestAction sendHttpRequest = 8;
     // Action to open the browser, mailbox, phone, camera, etc.
-    OpenExternalAppAction open_external_app = 9;
+    OpenExternalAppAction openExternalApp = 9;
     ConditionAction condition = 10;
-    RetrieveDataAction retrieve_data = 11;
+    RetrieveDataAction retrieveData = 11;
   }
 }
 // An event is a notification that a specific action or interaction has occurred within a software application.
@@ -509,8 +499,8 @@ message NavigateToAction {
 // Action of if else
 message ConditionAction {
   ConditionType type = 1;
-  repeated Action if_actions = 2;
-  repeated Action  else_actions = 3;
+  repeated Action ifActions = 2;
+  repeated Action  elseActions = 3;
 }
 message ConditionType {
 }
@@ -530,7 +520,7 @@ message UpdateModifierAction {
 message RetrieveDataAction {
   string key = 1;
   string value = 2;
-  repeated Action subsequent_action = 3;
+  repeated Action subsequentAction = 3;
 }
 // Action to store data
 message StoreDataAction {
@@ -550,8 +540,8 @@ message SendHttpRequestAction {
   string endpoint = 1;
   RequestType type = 2;
   map<string, string> body = 3;
-  repeated Action success_actions = 4;
-  repeated Action failure_actions = 5;
+  repeated Action successActions = 4;
+  repeated Action failureActions = 5;
 }
 enum RequestType{
   GET = 0;
