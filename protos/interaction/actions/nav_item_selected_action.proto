@@ -4,9 +4,8 @@ package com.yunlong.particle.proto;
 
 import "protos/modifiers/modifier.proto"
 
-// Action to update the UI modifier
-message UpdateModifierAction {
+// Action to update the nav item active state
+message NavItemSelectedAction {
   string target = 1;
-  bool override = 2;
-  Modifier modifier = 3;
+  string selectId = 2;
 }

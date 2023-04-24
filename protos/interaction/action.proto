@@ -13,6 +13,7 @@ import "protos/interaction/actions/send_http_request_action.proto";
 import "protos/interaction/actions/open_external_app_action.proto";
 import "protos/interaction/actions/condition_action.proto";
 import "protos/interaction/actions/retrieve_data_action.proto";
+import "protos/interaction/actions/nav_item_selected_action.proto";
 
 
 //  An action is a specific task or behavior that is triggered by a user interaction,
@@ -42,5 +43,6 @@ message Action {
     OpenExternalAppAction openExternalApp = 9;
     ConditionAction condition = 10;
     RetrieveDataAction retrieveData = 11;
+    NavItemSelectedAction navItemSelected = 12;
   }
 }
