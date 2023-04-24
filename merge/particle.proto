@@ -469,6 +469,7 @@ message Action {
     OpenExternalAppAction openExternalApp = 9;
     ConditionAction condition = 10;
     RetrieveDataAction retrieveData = 11;
+    NavItemSelectedAction navItemSelected = 12;
   }
 }
 // An event is a notification that a specific action or interaction has occurred within a software application.
@@ -550,14 +551,20 @@ enum NavigationMode{
 }
 // Action to update the UI modifier
 message UpdateModifierAction {
-  bool override = 1;
-  Modifier modifier = 2;
+  string target = 1;
+  bool override = 2;
+  Modifier modifier = 3;
 }
 // Action to retrieve data
 message RetrieveDataAction {
   string key = 1;
   string value = 2;
   repeated Action subsequentAction = 3;
+}
+// Action to update the nav item active state
+message NavItemSelectedAction {
+  string target = 1;
+  string selectId = 2;
 }
 // Action to store data
 message StoreDataAction {
